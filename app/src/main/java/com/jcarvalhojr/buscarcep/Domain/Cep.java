@@ -1,4 +1,4 @@
-package com.jcarvalhojr.buscarcep;
+package com.jcarvalhojr.buscarcep.Domain;
 
 public class Cep {
 
@@ -106,17 +106,18 @@ public class Cep {
 
     @Override
     public String toString() {
-        return "CEP;
-        Address_Type;
-        Address_Name;
-        Address;
-        District;
-        City;
-        State;
-        Lat;
-        Lng;
-        Ddd;
-        City_ibge;
+        return
+                "CEP:" + getCep()
+                        + "\nAddress_Type:" + getAddress_Type()
+                        + "\nAddress_Name:" + getAddress_Name()
+                        + "\nAddress:" + getAddress()
+                        + "\nDistrict:" + getDistrict()
+                        + "\nCity:" + getCity()
+                        + "\nState:" + getState()
+                        + "\n Lat:" + getLat()
+                        + "\n Lng:" + getLng()
+                        + "\nDdd:" + getDdd()
+                        + "\nCity_ibge:" + getCity_ibge();
 
     }
 }
