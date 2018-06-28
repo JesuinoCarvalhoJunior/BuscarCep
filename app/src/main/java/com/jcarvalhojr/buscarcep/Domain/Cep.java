@@ -125,6 +125,6 @@ public class Cep {
                         + "\nLng: " + getLng()
                         + "\nDDD: " + getDdd()
                         + "\nCód. IBGE: " + getCity_ibge();
-
     }
+
 }
