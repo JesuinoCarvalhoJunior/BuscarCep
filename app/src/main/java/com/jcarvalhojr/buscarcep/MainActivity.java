@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import com.jcarvalhojr.buscacep.R;
 import com.jcarvalhojr.buscarcep.Domain.Cep;
+import com.jcarvalhojr.buscarcep.Fragments.AboutDialog;
 import com.jcarvalhojr.buscarcep.Helpers.Mask;
 import com.jcarvalhojr.buscarcep.ServiceRetrofit.ServiceGetCep;
 import com.jcarvalhojr.buscarcep.ServiceRetrofit.ServiceGetInstanceRetrofit;
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Cep> call, Response<Cep> response) {
 
-                        response.message().replace("}", "");
+                        //   response.message().replace("}", "");
                         Cep cep = response.body();
 
                         if (response.isSuccessful()) {
@@ -87,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override
@@ -104,6 +106,22 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onRestoreInstanceState()");
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_about) {
+            AboutDialog.showAbout(getSupportFragmentManager());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void initialize() {
         edtCep = (EditText) findViewById(R.id.edtCep);
@@ -117,5 +135,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void createServiceGetCep() {
         serviceGetCep = ServiceGetInstanceRetrofit.getInstanceRetrofit().create(ServiceGetCep.class);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "Main activity onRestart.");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "Main activity onPause.");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "Main activity onStop.");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "Main activity onDestroy.");
     }
 }

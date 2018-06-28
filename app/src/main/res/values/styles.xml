@@ -8,6 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
+    <string name="action_about">Sobre</string>
 
 </resources>

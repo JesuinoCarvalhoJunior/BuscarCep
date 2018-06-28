@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Buscar Cep</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="ok">OK</string>
+    <string name="about_dialog_title">Informações</string>
+
+    <string name="about_dialog_text">
+    <![CDATA[
+<b>Buscador de endereço através do CEP</b>
+<br>
+Versao %s
+<br>
+<br>
+<b>Desenvolvido por</b>
+<br>
+Jesuino Carvalho Júnior
+<br>
+<br>
+<b>Email</b>
+<br>
+juniorsnakee@gmail.com
+<br>
+<br>
+<b>Copyright © 2018</b>
+<br>
+Todos os diretos reservados
+]]>
+    </string>
 </resources>
