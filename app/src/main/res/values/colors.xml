@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!--
+       <color name="colorPrimary">#3F51B5</color>
+       <color name="colorPrimaryDark">#303F9F</color>
+       <color name="colorAccent">#FF4081</color>
+       -->
+
+    <!-- Cores do Tema Material -->
+    <!-- 500  3F51B5 Azul-->
+    <color name="colorPrimary">#795548</color>
+    <!-- 700  303F9F -->
+    <color name="colorPrimaryDark">#5d4037</color>
+    <!-- A200  FF4081 -->
+    <color name="colorAccent">#5d4037</color>
+    <!-- Cor para o efeito ripple -->
+    <!-- 100 B3E5FC -->
+    <!--<color name="control_highlight">#B3E5FC</color> -->
+    <color name="control_highlight">#ff6d00</color>
+
+
+    <!-- Outras cores -->
+    <color name="transparent">#0000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="blue">#00f</color>
+    <color name="red">#f00</color>
+    <color name="green">#0f0</color>
+    <color name="yellow">#fff000</color>
+    <color name="orange">#FF6D3F</color>
+    <color name="orange_dark">#e65100</color>
+    <color name="orange_500">#ff5722</color>
 
 
 </resources>

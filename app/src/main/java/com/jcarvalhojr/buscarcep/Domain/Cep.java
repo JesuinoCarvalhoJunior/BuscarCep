@@ -115,16 +115,16 @@ public class Cep {
     public String toString() {
         return
                 "Cep:" + getCep()
-                        + "\nTipo :" + getAddress_type()
+                        + "\nTipo: " + getAddress_type()
                         + "\nEndereço:" + getAddress_name()
-                        + "\nEnd. Completo :" + getAddress()
-                        + "\nBairro :" + getDistrict()
-                        + "\nCidade :" + getCity()
-                        + "\nEstado :" + getState()
-                        + "\nLat :" + getLat()
-                        + "\nLng :" + getLng()
-                        + "\nDDD :" + getDdd()
-                        + "\nCód. IBGE :" + getCity_ibge();
+                        + "\nEnd. Completo: " + getAddress()
+                        + "\nBairro: " + getDistrict()
+                        + "\nCidade: " + getCity()
+                        + "\nEstado: " + getState()
+                        + "\nLat: " + getLat()
+                        + "\nLng: " + getLng()
+                        + "\nDDD: " + getDdd()
+                        + "\nCód. IBGE: " + getCity_ibge();
 
     }
 }
