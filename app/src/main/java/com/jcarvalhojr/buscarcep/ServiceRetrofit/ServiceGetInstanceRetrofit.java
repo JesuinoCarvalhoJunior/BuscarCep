@@ -32,8 +32,9 @@ public class ServiceGetInstanceRetrofit {
 
         return retrofit;
 
-
     }
+
+
 
 
 }
