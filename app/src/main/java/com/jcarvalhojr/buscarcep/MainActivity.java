@@ -29,19 +29,21 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     ServiceGetCep serviceGetCep;
+    private String TAG = "Rotação";
+
     private EditText edtCep;
     private TextView txtRetornoCep;
     private Button btnBuscarCep;
-
     private TextWatcher cepMask;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         initialize();
+
 
         btnBuscarCep.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +86,22 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("Retorno", txtRetornoCep.getText().toString());
+        Log.i(TAG, "onSaveInstanceState()");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        txtRetornoCep.setText(savedInstanceState.getString("Retorno"));
+        Log.i(TAG, "onRestoreInstanceState()");
     }
 
 
@@ -91,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
         edtCep = (EditText) findViewById(R.id.edtCep);
         txtRetornoCep = (TextView) findViewById(R.id.txtRetornoCep);
         btnBuscarCep = (Button) findViewById(R.id.btnBuscarCep);
-
         cepMask = Mask.insert("##.###-###", edtCep);
         edtCep.addTextChangedListener(cepMask);
         createServiceGetCep();
