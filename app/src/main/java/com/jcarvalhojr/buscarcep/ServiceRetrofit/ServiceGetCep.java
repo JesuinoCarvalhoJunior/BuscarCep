@@ -5,6 +5,7 @@ import com.jcarvalhojr.buscarcep.Domain.Cep;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 
 /**
@@ -16,7 +17,8 @@ public interface ServiceGetCep {
 
     //https://cep.awesomeapi.com.br/:format/:cep
 
-    @GET("cep")
+    @GET("/json/{cep}")
+    //Call<Cep> getCep(@Query(value = "Cep", encoded = true) String cep);
     Call<Cep> getCep(@Path("cep") String cep);
 
 }

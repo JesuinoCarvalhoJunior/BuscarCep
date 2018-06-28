@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:digits="0123456789"
-        android:hint="CEP"
+        android:gravity="center"
+        android:hint="digite o cep"
         android:inputType="number"
         android:textColor="#595959"
         android:textSize="25sp" />
@@ -36,11 +37,18 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtRetornoCep"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="#595959"
-        android:textSize="20sp" />
+        android:background="@color/colorPrimary"
+        tools:background="@color/white">
+
+        <TextView
+            android:id="@+id/txtRetornoCep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </ScrollView>
 
 </LinearLayout>

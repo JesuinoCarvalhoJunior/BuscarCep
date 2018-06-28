@@ -1,5 +1,8 @@
 package com.jcarvalhojr.buscarcep.Domain;
 
+
+import com.jcarvalhojr.buscarcep.Helpers.Mask;
+
 /**
  * Criado por JcarvalhoJr em 27/06/2018.
  */
@@ -7,122 +10,121 @@ package com.jcarvalhojr.buscarcep.Domain;
 
 public class Cep {
 
-
-    private String Cep;
-    private String Address_Type;
-    private String Address_Name;
-    private String Address;
-    private String District;
-    private String City;
-    private String State;
-    private String Lat;
-    private String Lng;
-    private String Ddd;
-    private String City_ibge;
+    private String cep;
+    private String address_type;
+    private String address_name;
+    private String address;
+    private String district;
+    private String city;
+    private String state;
+    private String lat;
+    private String lng;
+    private String ddd;
+    private String city_ibge;
 
 
     public String getCep() {
-        return Cep;
+        return cep;
     }
 
     public void setCep(String cep) {
-        Cep = cep;
+        this.cep = cep;
     }
 
-    public String getAddress_Type() {
-        return Address_Type;
+    public String getAddress_type() {
+        return address_type;
     }
 
-    public void setAddress_Type(String address_Type) {
-        Address_Type = address_Type;
+    public void setAddress_type(String address_type) {
+        this.address_type = address_type;
     }
 
-    public String getAddress_Name() {
-        return Address_Name;
+    public String getAddress_name() {
+        return address_name;
     }
 
-    public void setAddress_Name(String address_Name) {
-        Address_Name = address_Name;
+    public void setAddress_name(String address_name) {
+        this.address_name = address_name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getDistrict() {
-        return District;
+        return district;
     }
 
     public void setDistrict(String district) {
-        District = district;
+        this.district = district;
     }
 
     public String getCity() {
-        return City;
+        return city;
     }
 
     public void setCity(String city) {
-        City = city;
+        this.city = city;
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     public String getLat() {
-        return Lat;
+        return lat;
     }
 
     public void setLat(String lat) {
-        Lat = lat;
+        this.lat = lat;
     }
 
     public String getLng() {
-        return Lng;
+        return lng;
     }
 
     public void setLng(String lng) {
-        Lng = lng;
+        this.lng = lng;
     }
 
     public String getDdd() {
-        return Ddd;
+        return ddd;
     }
 
     public void setDdd(String ddd) {
-        Ddd = ddd;
+        this.ddd = ddd;
     }
 
     public String getCity_ibge() {
-        return City_ibge;
+        return city_ibge;
     }
 
     public void setCity_ibge(String city_ibge) {
-        City_ibge = city_ibge;
+        this.city_ibge = city_ibge;
     }
 
     @Override
     public String toString() {
         return
-                "CEP:" + getCep()
-                        + "\nAddress_Type:" + getAddress_Type()
-                        + "\nAddress_Name:" + getAddress_Name()
-                        + "\nAddress:" + getAddress()
-                        + "\nDistrict:" + getDistrict()
-                        + "\nCity:" + getCity()
-                        + "\nState:" + getState()
-                        + "\n Lat:" + getLat()
-                        + "\n Lng:" + getLng()
-                        + "\nDdd:" + getDdd()
-                        + "\nCity_ibge:" + getCity_ibge();
+                "Cep:" + getCep()
+                        + "\nTipo :" + getAddress_type()
+                        + "\nEndereço:" + getAddress_name()
+                        + "\nEnd. Completo :" + getAddress()
+                        + "\nBairro :" + getDistrict()
+                        + "\nCidade :" + getCity()
+                        + "\nEstado :" + getState()
+                        + "\nLat :" + getLat()
+                        + "\nLng :" + getLng()
+                        + "\nDDD :" + getDdd()
+                        + "\nCód. IBGE :" + getCity_ibge();
 
     }
 }

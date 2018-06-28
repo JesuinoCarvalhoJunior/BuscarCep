@@ -2,6 +2,8 @@ package com.jcarvalhojr.buscarcep;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import com.jcarvalhojr.buscacep.R;
 import com.jcarvalhojr.buscarcep.Domain.Cep;
+import com.jcarvalhojr.buscarcep.Helpers.Mask;
 import com.jcarvalhojr.buscarcep.ServiceRetrofit.ServiceGetCep;
 import com.jcarvalhojr.buscarcep.ServiceRetrofit.ServiceGetInstanceRetrofit;
 
@@ -25,11 +28,13 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-
     ServiceGetCep serviceGetCep;
     private EditText edtCep;
-    private EditText txtRetornoCep;
+    private TextView txtRetornoCep;
     private Button btnBuscarCep;
+
+    private TextWatcher cepMask;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,17 +47,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Call<Cep> call = serviceGetCep.getCep(edtCep.getText().toString());
+                if (TextUtils.isEmpty(edtCep.getText())) {
+                    edtCep.setError("Informe o CEP");
+                    edtCep.setFocusable(true);
+                    return;
+                }
+
+                Call<Cep> call = serviceGetCep.getCep(Mask.unmask(edtCep.getText().toString()));
                 call.enqueue(new Callback<Cep>() {
                     @Override
                     public void onResponse(Call<Cep> call, Response<Cep> response) {
+
+                        response.message().replace("}", "");
                         Cep cep = response.body();
 
                         if (response.isSuccessful()) {
 
-                            if (!cep.getCep().isEmpty()) {
+                            if (cep != null) {
                                 txtRetornoCep.setText(cep.toString());
-
                             } else {
                                 Toast.makeText(getApplicationContext(), "Nenhuma correspondência encontrada!", Toast.LENGTH_SHORT).show();
                             }
@@ -66,30 +78,27 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<Cep> call, Throwable t) {
                         Log.e("Consulta", "Erro ao fazer a consulta: " + t.getMessage());
-                        // Log error here since request failed
+
                         call.cancel();
                     }
                 });
-
             }
         });
-
-
     }
 
 
     private void initialize() {
+        edtCep = (EditText) findViewById(R.id.edtCep);
+        txtRetornoCep = (TextView) findViewById(R.id.txtRetornoCep);
+        btnBuscarCep = (Button) findViewById(R.id.btnBuscarCep);
 
-        final EditText edtCep = findViewById(R.id.edtCep);
-        final TextView txtRetornoCep = findViewById(R.id.txtRetornoCep);
-        final Button btnBuscarCep = findViewById(R.id.btnBuscarCep);
+        cepMask = Mask.insert("##.###-###", edtCep);
+        edtCep.addTextChangedListener(cepMask);
         createServiceGetCep();
-
     }
 
 
     private void createServiceGetCep() {
-
         serviceGetCep = ServiceGetInstanceRetrofit.getInstanceRetrofit().create(ServiceGetCep.class);
     }
 }

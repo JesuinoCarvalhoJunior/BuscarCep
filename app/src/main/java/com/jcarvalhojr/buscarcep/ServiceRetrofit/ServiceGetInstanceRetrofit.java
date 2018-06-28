@@ -6,6 +6,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.jackson.JacksonConverterFactory;
+
+/**
+ * Criado por JcarvalhoJr em 27/06/2018.
+ */
 
 public class ServiceGetInstanceRetrofit {
 
@@ -21,7 +26,6 @@ public class ServiceGetInstanceRetrofit {
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(interceptor).build();
 
-
         retrofit = null;
 
         retrofit = new Retrofit
@@ -33,8 +37,5 @@ public class ServiceGetInstanceRetrofit {
         return retrofit;
 
     }
-
-
-
 
 }
