@@ -9,5 +9,14 @@
     </style>
 
     <string name="action_about">Sobre</string>
+    <string name="action_mapa">Mapa</string>
+
+
+    <style name="CustomDialog" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">Aguarde…</item>
+        <item name="DialogSpotColor">@android:color/holo_orange_dark</item>
+        <item name="DialogSpotCount">6</item>
+    </style>
 
 </resources>

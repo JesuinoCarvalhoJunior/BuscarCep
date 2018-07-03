@@ -124,7 +124,7 @@ public class Cep {
                         + "\nLat: " + getLat()
                         + "\nLng: " + getLng()
                         + "\nDDD: " + getDdd()
-                        + "\nCód. IBGE: " + getCity_ibge();
+                        + "\nIBGE: " + getCity_ibge();
     }
 
 }

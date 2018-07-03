@@ -2,6 +2,24 @@
     <string name="app_name">Buscar Endereço</string>
 
     <string name="action_settings">Settings</string>
+    <string name="error_conexao_indisponivel">Conexão indisponível. Verifique a conexão Wi-Fi ou 3G!</string>
+    <string name="info_title_alertdialog">Informação</string>
+
+
+    <string name="title_progresdialog">Realizando leitura</string>
+    <string name="msg_progresdialog">Aguarde...</string>
+
+
+    <!-- menu_frag_mapa.xml -->
+    <string name="mapa_normal">Modo Normal</string>
+    <string name="mapa_satelite">Modo Satélite</string>
+    <string name="mapa_terreno">Modo Terreno</string>
+    <string name="mapa_hibrido">Modo Híbrido</string>
+    <string name="mapa_location_directions">Direções</string>
+    <string name="mapa_location_carro">Localização do Carro</string>
+    <string name="mapa_zoom_in">Zoom (+)</string>
+    <string name="mapa_zoom_out">Zoom (-)</string>
+
 
     <string name="ok">OK</string>
     <string name="about_dialog_title">Informações</string>
@@ -28,4 +46,15 @@ juniorsnakee@gmail.com
 Todos os diretos reservados
 ]]>
     </string>
+    <string name="title_activity_maps">Map</string>
+
+
+    <string name="msg_alerta_permissao">Para utilizar este aplicativo, você precisa aceitar as permissões!</string>
+    <!--******************************** LISTA DE PERMISSOES ********************************-->
+    <string name="INTERNET">android.permission.INTERNET</string>
+    <string name="GPSCOARSELOCALIZACAO">android.permission.ACCESS_COARSE_LOCATION</string>
+    <string name="GPSFINELOCALIZACAO">android.permission.ACCESS_FINE_LOCATION</string>
+    <string name="title_activity_maps2">Map</string>
+
+
 </resources>

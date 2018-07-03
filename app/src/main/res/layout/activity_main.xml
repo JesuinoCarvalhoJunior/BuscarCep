@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:digits="0123456789"
         android:gravity="center"
-        android:hint="digite o cep"
+        android:hint="Pesquisar"
         android:inputType="number"
         android:textColor="#595959"
         android:textSize="25sp" />
@@ -31,25 +31,46 @@
             android:layout_marginBottom="10dp"
             android:background="@color/colorPrimary"
             android:padding="10dp"
-            android:text="Buscar CEP"
+            android:text="Pesquisar"
             android:textAllCaps="false"
             android:textColor="#FDFDFD"
             android:textSize="22sp" />
 
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
-        tools:background="@color/white">
 
-        <TextView
-            android:id="@+id/txtRetornoCep"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-    </ScrollView>
+            android:background="@color/colorPrimary"
+            tools:background="@color/white">
+
+            <TextView
+                android:id="@+id/txtRetornoCep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </LinearLayout>

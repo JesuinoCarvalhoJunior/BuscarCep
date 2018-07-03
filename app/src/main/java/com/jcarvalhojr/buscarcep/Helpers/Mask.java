@@ -4,7 +4,9 @@ package com.jcarvalhojr.buscarcep.Helpers;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
-
+/**
+ * Created by Junior_Carvalho on 27/06/2018.
+ */
 public abstract class Mask {
     public static String unmask(String s) {
         return s.replaceAll("[.]", "").replaceAll("[-]", "")
