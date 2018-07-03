@@ -40,9 +40,6 @@
         <activity
             android:name="com.jcarvalhojr.buscarcep.MapsActivity"
             android:label="@string/app_name" />
-        <activity
-            android:name="com.jcarvalhojr.buscarcep.MapsActivity2"
-            android:label="@string/title_activity_maps2" />
-    </application>
+     </application>
 
 </manifest>

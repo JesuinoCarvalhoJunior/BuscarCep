@@ -76,6 +76,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(local).title(endereco));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(local));
 
+
         CameraUpdate zoonLocal = CameraUpdateFactory.newLatLngZoom(local, 15);
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
         mMap.animateCamera(zoom);
