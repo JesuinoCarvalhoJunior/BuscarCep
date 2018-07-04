@@ -23,8 +23,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.jcarvalhojr.buscacep.R;
 import com.jcarvalhojr.buscarcep.Domain.Cep;
 import com.jcarvalhojr.buscarcep.Fragments.AboutDialog;
-import com.jcarvalhojr.buscarcep.Helpers.Mask;
-import com.jcarvalhojr.buscarcep.Helpers.MensagemHelper;
+import com.jcarvalhojr.buscarcep.Helpers.AlertUtils;
+import com.jcarvalhojr.buscarcep.Helpers.MaskEditText;
+import com.jcarvalhojr.buscarcep.Helpers.getVersionApp;
 import com.jcarvalhojr.buscarcep.ServiceRetrofit.ServiceGetCep;
 import com.jcarvalhojr.buscarcep.ServiceRetrofit.ServiceGetInstanceRetrofit;
 import com.jcarvalhojr.buscarcep.ServiceUtils.ConnectivityServices;
@@ -34,8 +35,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.jcarvalhojr.buscarcep.Helpers.Keyboard.hideKeyboard;
-import static com.jcarvalhojr.buscarcep.Helpers.Keyboard.showKeyboard;
+import static com.jcarvalhojr.buscarcep.Helpers.ShowHideKeyboard.hideKeyboard;
+import static com.jcarvalhojr.buscarcep.Helpers.ShowHideKeyboard.showKeyboard;
 
 
 /**
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     fetchCallCep();
                 } else {
                     progressCustomDialog.dismiss();
-                    MensagemHelper.alertDialog(MainActivity.this,
+                    AlertUtils.alertDialog(MainActivity.this,
                             R.string.info_title_alertdialog,
                             R.string.error_conexao_indisponivel);
                 }
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void fetchCallCep() {
-        Call<Cep> call = serviceGetCep.getCep(Mask.unmask(edtCep.getText().toString()));
+        Call<Cep> call = serviceGetCep.getCep(MaskEditText.unmask(edtCep.getText().toString()));
         call.enqueue(new Callback<Cep>() {
             @Override
             public void onResponse(Call<Cep> call, Response<Cep> response) {
@@ -194,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         edtCep = (EditText) findViewById(R.id.edtCep);
         txtRetornoCep = (TextView) findViewById(R.id.txtRetornoCep);
         btnBuscarCep = (Button) findViewById(R.id.btnBuscarCep);
-        cepMask = Mask.insert("##.###-###", edtCep);
+        cepMask = MaskEditText.insert("##.###-###", edtCep);
         edtCep.addTextChangedListener(cepMask);
         createServiceGetCep();
         showKeyboard(MainActivity.this, edtCep);

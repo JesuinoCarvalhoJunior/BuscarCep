@@ -6,7 +6,7 @@ import android.view.inputmethod.InputMethodManager;
 /**
  * Created by Junior_Carvalho on 27/06/2018.
  */
-public class Keyboard {
+public class ShowHideKeyboard {
 
     public static void hideKeyboard(Context context, View editText) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);

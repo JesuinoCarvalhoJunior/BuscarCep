@@ -5,7 +5,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import static com.jcarvalhojr.buscarcep.Helpers.MensagemHelper.alertDialog;
+import static com.jcarvalhojr.buscarcep.Helpers.AlertUtils.alertDialog;
 
 
 /**

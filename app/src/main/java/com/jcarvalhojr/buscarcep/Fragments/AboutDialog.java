@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import android.widget.TextView;
 
 import com.jcarvalhojr.buscacep.R;
-import com.jcarvalhojr.buscarcep.Helpers.MensagemHelper;
+import com.jcarvalhojr.buscarcep.Helpers.getVersionApp;
 
 
 /**
@@ -41,7 +41,7 @@ public class AboutDialog extends DialogFragment {
         //cria html com texto de sobre o aplicaivo
         SpannableStringBuilder aboutBody = new SpannableStringBuilder();
         //versoa do aplicativo
-        String versionName = MensagemHelper.getVersionName(getActivity());
+        String versionName = getVersionApp.getVersionName(getActivity());
         //converte o texto do string.xml para HTML
         aboutBody.append(Html.fromHtml(getString(R.string.about_dialog_text, versionName)));
         //infla o layout

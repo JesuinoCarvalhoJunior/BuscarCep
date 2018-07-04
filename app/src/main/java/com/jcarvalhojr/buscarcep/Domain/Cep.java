@@ -1,8 +1,6 @@
 package com.jcarvalhojr.buscarcep.Domain;
 
 
-import com.jcarvalhojr.buscarcep.Helpers.Mask;
-
 /**
  * Criado por JcarvalhoJr em 27/06/2018.
  */

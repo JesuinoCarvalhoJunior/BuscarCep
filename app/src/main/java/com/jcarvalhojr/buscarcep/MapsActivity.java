@@ -5,7 +5,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,7 +15,8 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.jcarvalhojr.buscacep.R;
-import com.jcarvalhojr.buscarcep.Helpers.MensagemHelper;
+import com.jcarvalhojr.buscarcep.Helpers.AlertUtils;
+import com.jcarvalhojr.buscarcep.Helpers.getVersionApp;
 import com.jcarvalhojr.buscarcep.ServiceUtils.ConnectivityServices;
 
 
@@ -39,7 +39,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         if (!ConnectivityServices.isNetworkAvailable(MapsActivity.this)) {
-            MensagemHelper.alertDialog(MapsActivity.this,
+            AlertUtils.alertDialog(MapsActivity.this,
                     R.string.info_title_alertdialog,
                     R.string.error_conexao_indisponivel);
             return;
@@ -70,12 +70,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
         local = new LatLng(lat, lng);
-
         mMap.addMarker(new MarkerOptions().position(local).title(endereco));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(local));
-
 
         CameraUpdate zoonLocal = CameraUpdateFactory.newLatLngZoom(local, 15);
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
