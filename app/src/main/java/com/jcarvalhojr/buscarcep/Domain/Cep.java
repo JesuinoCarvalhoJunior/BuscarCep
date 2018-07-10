@@ -1,24 +1,28 @@
 package com.jcarvalhojr.buscarcep.Domain;
 
 
+import org.parceler.Parcel;
+
 /**
  * Criado por JcarvalhoJr em 27/06/2018.
  */
 
-
+//@org.parceler.Parcel
+//@Parcel(Parcel.Serialization.BEAN)
+@Parcel
 public class Cep {
 
-    private String cep;
-    private String address_type;
-    private String address_name;
-    private String address;
-    private String district;
-    private String city;
-    private String state;
-    private String lat;
-    private String lng;
-    private String ddd;
-    private String city_ibge;
+    private  String cep;
+    private  String address_type;
+    private  String address_name;
+    private  String address;
+    private  String district;
+    private  String city;
+    private  String state;
+    private  String lat;
+    private  String lng;
+    private  String ddd;
+    private  String city_ibge;
 
 
     public String getCep() {

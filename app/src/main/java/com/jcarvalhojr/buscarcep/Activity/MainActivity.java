@@ -1,11 +1,10 @@
-package com.jcarvalhojr.buscarcep;
+package com.jcarvalhojr.buscarcep.Activity;
 
 
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -25,10 +24,11 @@ import com.jcarvalhojr.buscarcep.Domain.Cep;
 import com.jcarvalhojr.buscarcep.Fragments.AboutDialog;
 import com.jcarvalhojr.buscarcep.Helpers.AlertUtils;
 import com.jcarvalhojr.buscarcep.Helpers.MaskEditText;
-import com.jcarvalhojr.buscarcep.Helpers.getVersionApp;
 import com.jcarvalhojr.buscarcep.ServiceRetrofit.ServiceGetCep;
 import com.jcarvalhojr.buscarcep.ServiceRetrofit.ServiceGetInstanceRetrofit;
 import com.jcarvalhojr.buscarcep.ServiceUtils.ConnectivityServices;
+
+import org.parceler.Parcels;
 
 import dmax.dialog.SpotsDialog;
 import retrofit2.Call;
@@ -43,7 +43,7 @@ import static com.jcarvalhojr.buscarcep.Helpers.ShowHideKeyboard.showKeyboard;
  * Criado por JcarvalhoJr em 27/06/2018.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity { //AppCompatActivity {
 
     ServiceGetCep serviceGetCep;
     private GoogleMap mMap;
@@ -58,12 +58,20 @@ public class MainActivity extends AppCompatActivity {
     private Double lat;
     private Double lng;
     private String endereco;
+    private boolean isValid;
+
+    private Cep cep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+ /*       if (savedInstanceState == null){
+            setUpToolBar();
+            getSupportActionBar().setTitle("Buscar Endereço");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }*/
         initialize();
 
         btnBuscarCep.setOnClickListener(new View.OnClickListener() {
@@ -100,14 +108,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Cep> call, Response<Cep> response) {
 
-                Cep cep = response.body();
+                cep = response.body();
+
+                isValid = false;
 
                 if (response.isSuccessful()) {
 
                     if (cep != null) {
 
                         fetchRetorno(cep);
-
+                        isValid = true;
                     } else {
                         progressCustomDialog.dismiss();
                         txtRetornoCep.setText("Cep não encontrado!");
@@ -115,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 } else if (response.code() != 200) {
+                    isValid = false;
                     progressCustomDialog.dismiss();
                     txtRetornoCep.setText("Erro " + response.code() + " encontrado!");
                     txtRetornoCep.setGravity(Gravity.CENTER);
@@ -144,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
 
         lat = Double.valueOf(cep.getLat()).doubleValue();
         lng = Double.valueOf(cep.getLng()).doubleValue();
-        endereco  = cep.getAddress();
+        endereco = cep.getAddress();
     }
 
     @Override
@@ -153,6 +164,8 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("Retorno", txtRetornoCep.getText().toString());
         txtRetornoCep.requestFocus();
         Log.i(TAG, "onSaveInstanceState()");
+
+
     }
 
     @Override
@@ -161,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
         txtRetornoCep.setText(savedInstanceState.getString("Retorno"));
         txtRetornoCep.requestFocus();
         Log.i(TAG, "onRestoreInstanceState()");
+
     }
 
     @Override
@@ -177,14 +191,28 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_about) {
             AboutDialog.showAbout(getSupportFragmentManager());
             return true;
-        }
+        } else if (id == R.id.action_mapa) {
 
-        if (id == R.id.action_mapa) {
-            Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-            intent.putExtra("lat", lat);
-            intent.putExtra("lng", lng);
-            intent.putExtra("endereco", endereco);
+            if (!isValid) {
+                toast("Você não fez a pesquisa");
+                return false;
+            }
+
+            Intent intent = new Intent(MainActivity.this, MapaActivity.class);
+            intent.putExtra("cep", Parcels.wrap(cep));
             startActivity(intent);
+            finish();
+        } else if (id == R.id.ic_mapa) {
+            if (!isValid) {
+                toast("Você não fez a pesquisa");
+                return false;
+            }
+
+            Intent intent = new Intent(MainActivity.this, MapaActivity.class);
+            intent.putExtra("cep", Parcels.wrap(cep));
+            startActivity(intent);
+            finish();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -192,6 +220,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initialize() {
+        setUpToolBar();
+
+       // getSupportActionBar().setTitle("Buscar Endereço");
+      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+  /*      getLayoutInflater().inflate(R.layout.toolbar, (ViewGroup) findViewById(android.R.id.content));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);*/
+
         edtCep = (EditText) findViewById(R.id.edtCep);
         txtRetornoCep = (TextView) findViewById(R.id.txtRetornoCep);
         btnBuscarCep = (Button) findViewById(R.id.btnBuscarCep);
@@ -199,6 +236,9 @@ public class MainActivity extends AppCompatActivity {
         edtCep.addTextChangedListener(cepMask);
         createServiceGetCep();
         showKeyboard(MainActivity.this, edtCep);
+
+        /*// para debug
+        edtCep.setText("78.025-105");*/
 
         createCustomDialog();
     }

@@ -18,4 +18,18 @@ public class ShowHideKeyboard {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(editText, 0);
     }
+
+    // Fecha o teclado virtual se aberto (view com foque)
+    public static boolean closeVirtualKeyboard(Context context, View view) {
+        // Fecha o teclado virtual
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            boolean b = imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            return b;
+        }
+        return false;
+    }
+
+
+
 }

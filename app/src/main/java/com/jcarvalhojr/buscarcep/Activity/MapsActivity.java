@@ -1,10 +1,14 @@
-package com.jcarvalhojr.buscarcep;
+package com.jcarvalhojr.buscarcep.Activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,27 +20,29 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.jcarvalhojr.buscacep.R;
 import com.jcarvalhojr.buscarcep.Helpers.AlertUtils;
-import com.jcarvalhojr.buscarcep.Helpers.getVersionApp;
 import com.jcarvalhojr.buscarcep.ServiceUtils.ConnectivityServices;
-
 
 
 /**
  * Criado por JcarvalhoJr em 27/06/2018.
  */
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Double lat;
     private Double lng;
     private String endereco;
-    LatLng local;
+    private LatLng local;
+    private Toolbar toolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+       // setupToobar();
+
 
         if (!ConnectivityServices.isNetworkAvailable(MapsActivity.this)) {
             AlertUtils.alertDialog(MapsActivity.this,
@@ -79,7 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.animateCamera(zoom);
         mMap.animateCamera(zoonLocal);
 
-        setUpMap();
+       setUpMap();
     }
 
     @Override
@@ -127,4 +133,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         mMap.setMyLocationEnabled(true);
     }
+
+    private void setupToobar() {
+
+        getLayoutInflater().inflate(R.layout.toolbar, (ViewGroup) findViewById(android.R.id.content));
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(endereco);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
+    }
+
+
 }

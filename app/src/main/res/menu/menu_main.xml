@@ -2,6 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.leitorqrcodebarcode.jcarvalhojr.leitorqrcodebarcodepro.MainActivity">
+
+    <item
+        android:id="@+id/ic_mapa"
+        android:title="@string/action_mapa"
+        android:icon="@mipmap/ic_mapa"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_about"
         android:title="@string/action_about"

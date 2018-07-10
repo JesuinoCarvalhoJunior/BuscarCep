@@ -1,4 +1,4 @@
-package com.jcarvalhojr.buscarcep;
+package com.jcarvalhojr.buscarcep.Activity;
 
 
 import android.annotation.TargetApi;
@@ -8,7 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.app.ProgressDialog;
+
 import com.jcarvalhojr.buscacep.R;
 import com.jcarvalhojr.buscarcep.Helpers.AlertUtils;
 import com.jcarvalhojr.buscarcep.ServiceUtils.PermissionUtils;

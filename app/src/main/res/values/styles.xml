@@ -1,22 +1,77 @@
-<resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <string name="action_about">Sobre</string>
-    <string name="action_mapa">Mapa</string>
 
 
-    <style name="CustomDialog" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
-        <item name="DialogTitleText">Aguarde…</item>
-        <item name="DialogSpotColor">@android:color/holo_orange_dark</item>
-        <item name="DialogSpotCount">6</item>
-    </style>
+    <resources>
+        <!-- Tema base. -->
+        <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+            <!-- Cor primária do aplicativo -->
+            <item name="colorPrimary">@color/primary</item>
+            <!-- Variação escura da cor primária para a status bar e contextual app bars -->
+            <item name="colorPrimaryDark">@color/primary_dark</item>
+            <!-- Cor de acentuação para as views (checkbox, textfield etc.) -->
+            <item name="colorAccent">@color/control_highlight</item>
+            <!-- Cor para o efeito ripple -->
+            <item name="colorControlHighlight">@color/control_highlight</item>
+            <!-- Action Mode Overlay -->
+            <item name="windowActionModeOverlay">true</item>
+            <!-- Cor da Action bar de contexto (CAB) -->
+            <item name="actionModeBackground">@color/primary</item>
+        </style>
 
-</resources>
+        <!-- Tema base + NoActionBar -->
+        <style name="AppTheme.NoActionBar">
+            <item name="windowActionBar">false</item>
+            <item name="windowNoTitle">true</item>
+        </style>
+
+        <string name="action_about">Sobre</string>
+        <string name="action_mapa">Mapa</string>
+
+
+
+        <!-- Tema base + NoActionBar -->
+        <style
+            name="AppTheme.NoActionBar.NavDrawer">
+        </style>
+        <!-- Temas para a Toolbar, ver include_toolbar.xml -->
+        <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+        <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+
+        <style name="CustomDialog" parent="Theme.AppCompat.Light.NoActionBar">
+            <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+            <item name="DialogTitleText">Aguarde…</item>
+            <item name="DialogSpotColor">@color/control_highlight</item>
+            <item name="DialogSpotCount">7</item>
+        </style>
+
+    </resources>
+
+
+
+
+
+        <!--
+        <resources>
+
+            &lt;!&ndash; Base application theme.  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"> &ndash;&gt;
+            <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+                &lt;!&ndash; Customize your theme here. &ndash;&gt;
+                <item name="colorPrimary">@color/colorPrimary</item>
+                <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+                <item name="colorAccent">@color/colorAccent</item>
+            </style>
+
+            <string name="action_about">Sobre</string>
+            <string name="action_mapa">Mapa</string>
+
+
+            <style name="CustomDialog" parent="Theme.AppCompat.Light.NoActionBar">
+                <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+                <item name="DialogTitleText">Aguarde…</item>
+                <item name="DialogSpotColor">@android:color/holo_orange_dark</item>
+                <item name="DialogSpotCount">6</item>
+            </style>
+
+        </resources>
+        -->

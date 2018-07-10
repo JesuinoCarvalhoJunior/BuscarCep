@@ -6,17 +6,27 @@
        <color name="colorAccent">#FF4081</color>
        -->
 
-    <!-- Cores do Tema Material -->
-    <!-- 500  3F51B5 Azul-->
-    <color name="colorPrimary">#795548</color>
-    <!-- 700  303F9F -->
-    <color name="colorPrimaryDark">#5d4037</color>
-    <!-- A200  FF4081 -->
-    <color name="colorAccent">#5d4037</color>
-    <!-- Cor para o efeito ripple -->
-    <!-- 100 B3E5FC -->
-    <!--<color name="control_highlight">#B3E5FC</color> -->
+  <!--  &lt;!&ndash; Cores do Tema Material &ndash;&gt;
+    &lt;!&ndash; 500  3F51B5 Azul&ndash;&gt;
+    <color name="primary">#795548</color>
+    &lt;!&ndash; 700  303F9F &ndash;&gt;
+    <color name="primary_dark">#5d4037</color>
+    &lt;!&ndash; A200  FF4081 &ndash;&gt;
+    <color name="accent">#5d4037</color>
+    &lt;!&ndash; Cor para o efeito ripple &ndash;&gt;
+    &lt;!&ndash; 100 B3E5FC &ndash;&gt;
+    &lt;!&ndash;<color name="control_highlight">#B3E5FC</color> &ndash;&gt;
     <color name="control_highlight">#ff6d00</color>
+-->
+    <!-- Cores do Tema Material -->
+
+    <color name="primary">#795548</color>
+
+    <color name="primary_dark">#5d4037</color>
+
+    <color name="accent">#FF5722</color>
+
+    <color name="control_highlight">#FF5722</color>
 
 
     <!-- Outras cores -->
@@ -30,6 +40,7 @@
     <color name="orange">#FF6D3F</color>
     <color name="orange_dark">#e65100</color>
     <color name="orange_500">#ff5722</color>
+    <color name="transparente">#00000000</color>
 
 
 </resources>
